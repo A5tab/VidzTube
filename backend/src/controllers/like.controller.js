@@ -11,7 +11,7 @@ const toggleVideoLike = asyncHandler(async (req, res) => {
     //TODO: toggle like on video
     const existingLike = await Like.findById({ video: videoId, likedBy: userId })
     let res;
-    if (like) {
+    if (existingLike) {
         res = await Like.findByIdAndDelete({ _id: existingLike._id })
     } else {
         res = await Like.create({ video: videoId, likedBy: userId })
